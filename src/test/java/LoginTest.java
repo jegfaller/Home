@@ -11,16 +11,16 @@ public class LoginTest {
     @BeforeTest
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/index.html");
     }
 
     @Test
     public void successLogin() {
         page = new LoginPage(driver);
-        page.typeUsername("standard_user");
-        page.typePassword("secret_sauce");
-        page.makeLogin();
+        page.typeUsername("standard_user")
+                .typePassword("secret_sauce")
+                .makeLogin();
     }
 
     @AfterTest
