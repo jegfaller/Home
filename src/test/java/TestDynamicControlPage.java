@@ -20,32 +20,63 @@ public class TestDynamicControlPage {
     }
 
     @Test
-    public void testFindCheckbox(){
+    public void testFindCheckbox() {
         page = new DynamicControlPage(driver);
         Assert.assertTrue(page.findCheckbox());
     }
 
     @Test
-    public void testClickCheckboxButton(){
+    public void testClickCheckboxButton() {
         page = new DynamicControlPage(driver);
         Assert.assertTrue(page.clickCheckboxButton());
     }
 
     @Test
-    public void testItsGoneText(){
+    public void testItsGoneText() {
         page = new DynamicControlPage(driver);
         page.clickCheckboxButton();
         String message = page.getItsGoneText();
-        Assert.assertEquals(message,"It's gone!");
+        Assert.assertEquals(message, "It's gone!");
     }
 
     @Test
-    public void testCheckboxIsNotVisible(){
+    public void testCheckboxIsNotVisible() {
         page = new DynamicControlPage(driver);
         page.clickCheckboxButton();
         Assert.assertTrue(page.checkCheckboxVisibility());
+    }
 
+    @Test
+    public void testFindInput() {
+        page = new DynamicControlPage(driver);
+        Assert.assertTrue(page.findInput());
+    }
 
+    @Test
+    public void testInputIsDisabled() {
+        page = new DynamicControlPage(driver);
+        Assert.assertTrue(page.checkDisabledInput());
+    }
+
+    @Test
+    public void testClickInputButton() {
+        page = new DynamicControlPage(driver);
+        Assert.assertTrue(page.clickInputButton());
+    }
+
+    @Test
+    public void testItsEnabledText() {
+        page = new DynamicControlPage(driver);
+        page.clickInputButton();
+        String message = page.getIsEnabledMessage();
+        Assert.assertEquals(message, "It's enabled!");
+    }
+
+    @Test
+    public void testCheckEnabledInput() {
+        page = new DynamicControlPage(driver);
+        page.clickInputButton();
+        Assert.assertTrue(page.checkEnabledInput());
     }
 
     @AfterMethod

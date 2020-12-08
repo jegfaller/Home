@@ -32,33 +32,33 @@ public class DynamicControlPage {
         return message;
     }
 
-    public boolean checkCheckboxVisibility(){
-        WebDriverWait wait = new WebDriverWait(driver,5);
+    public boolean checkCheckboxVisibility() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(checkbox));
         return true;
     }
 
-    public boolean findInput(){
+    public boolean findInput() {
         driver.findElement(input);
         return true;
     }
 
-    public boolean checkDisabledInput(){
+    public boolean checkDisabledInput() {
         driver.findElement(input).getAttribute("disabled");
         return true;
     }
 
-    public boolean clickInputButton(){
+    public boolean clickInputButton() {
         driver.findElement(inputButton).click();
         return true;
     }
 
-    public String getIsEnabledMessage(){
+    public String getIsEnabledMessage() {
         String mess = driver.findElement(itsEnabledMessage).getText();
         return mess;
     }
 
-    public boolean checkEnabledInput(){
+    public boolean checkEnabledInput() {
         driver.findElement(input).getAttribute("enabled");
         return true;
     }
