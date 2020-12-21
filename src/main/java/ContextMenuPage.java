@@ -4,18 +4,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class ContextMenuPage {
-    WebDriver driver;
+public class ContextMenuPage extends BasePage {
+
 
     public ContextMenuPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    By contextArea = By.id("hot-spot");
+    public static final By CONTEXT_AREA = By.id("hot-spot");
+
+    public void openPage() {
+        driver.get("http://the-internet.herokuapp.com/context_menu");
+    }
 
     public void rightClick() {
         Actions actions = new Actions(driver);
-        WebElement textArea = driver.findElement(contextArea);
+        WebElement textArea = driver.findElement(CONTEXT_AREA);
         actions.contextClick(textArea).perform();
     }
 
@@ -24,7 +28,8 @@ public class ContextMenuPage {
         okButton.accept();
         return true;
     }
-    public String getAlertMessage(){
+
+    public String getAlertMessage() {
         Alert alertMessage = driver.switchTo().alert();
         String message = alertMessage.getText();
         return message;

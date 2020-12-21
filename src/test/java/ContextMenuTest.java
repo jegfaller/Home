@@ -1,31 +1,21 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class ContextMenuTest {
-    WebDriver driver;
-    ContextMenuPage page;
-
-    @BeforeTest
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
-        driver = new ChromeDriver();
-        driver.get("http://the-internet.herokuapp.com/context_menu");
-    }
+public class ContextMenuTest extends BaseTest {
 
     @Test
     public void testContextMenuIsAppear() {
-        page = new ContextMenuPage(driver);
-        page.rightClick();
-        page.clickOkOnAlertButton();
+        contextMenuPage.openPage();
+        contextMenuPage.rightClick();
+        contextMenuPage.clickOkOnAlertButton();
         Assert.assertTrue(true);
     }
 
-    @AfterTest
-    public void driverClose() {
-        driver.close();
+    @Test
+    public void testAlertMessage() {
+        contextMenuPage.openPage();
+        contextMenuPage.rightClick();
+        String message = contextMenuPage.getAlertMessage();
+        Assert.assertEquals(message, "You selected a context menu");
     }
 }
