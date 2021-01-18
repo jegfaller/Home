@@ -1,1 +1,5 @@
-Re.class
+TestUpload.class
+TestDynamicControlPage.class
+ContextMenuTest.class
+TestFramesPage.class
+BaseTest.class
