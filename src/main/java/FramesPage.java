@@ -1,27 +1,33 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class FramesPage {
-    WebDriver driver;
+public class FramesPage extends BasePage {
+
+    @FindBy(xpath = "//a[@href='/iframe']")
+    WebElement iFrameLink;
+    @FindBy(tagName = "iframe")
+    WebElement iFrame;
+    @FindBy(id = "tinymce")
+    WebElement iFrameBody;
 
     public FramesPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    By iFrameLink = By.xpath("//a[@href='/iframe']");
-    By iFrame = By.tagName("iframe");
-    By iFrameBody = By.id("tinymce");
+    public void openPage(){
+        driver.get("http://the-internet.herokuapp.com/frames");
+    }
 
     public void clickIframe() {
-        driver.findElement(iFrameLink).click();
-
+        iFrameLink.click();
     }
 
     public String getPText() {
-        WebElement iframeMsg = driver.findElement(iFrame);
-        driver.switchTo().frame(iframeMsg);
-        String text = driver.findElement(iFrameBody).getText();
+        driver.switchTo().frame(iFrame);
+        String text = iFrameBody.getText();
         return text;
     }
 }
